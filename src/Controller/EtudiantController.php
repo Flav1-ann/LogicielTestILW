@@ -65,12 +65,7 @@ class EtudiantController extends AbstractController
             return $this->redirectToRoute('etudiant');
         }
 
-        $coursForm = $this->createForm(CreateCourFormType::class);
-        $coursForm->handleRequest($request);
-        if ($coursForm->isSubmitted() && $coursForm->isValid()){
-            
-            return $this->redirectToRoute('etudiant');
-        }
+       
        
         return $this->render('etudiant/edit.html.twig', [
             'controller_name' => 'EtudiantController',
