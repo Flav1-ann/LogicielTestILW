@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Edition de l'étudiant
+{% endblock %}
+
+{% block body %}
+<h1> Edition de l'étudiant</h1>
+	<div>
+		{{form_start( etudiantForm )}}
+        {{form_end( etudiantForm )}}
+        <br>
+	</div>
+	<h1> Ajout d'un cours </h1>
+    <div>
+		{{form_start( coursForm )}}
+        {{form_end( coursForm )}}
+	</div>
+    <div>
+	<br>
+		<button><a href="{{ path('supprimerEtudiant',{'id': etudiant.id}) }}">Supprimer l'étudiant</a></button>
+	</div>
+{% endblock %}

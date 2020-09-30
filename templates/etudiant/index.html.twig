@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+	<div>
+		<h1>
+			Liste des étudiants</h1>
+		<table BORDER WIDTH="50%" >
+			<tr>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Modifier</th>
+			</tr>
+			{% for etudiant in etudiants %}
+				<tr>
+					<td>{{etudiant.nom}}</td>
+					<td>{{etudiant.prenom}}</td>
+					<td><a href="{{ path('consulterEtudiant',{'id': etudiant.id})}}"><img class="Logo_tab" src="/image/modif.png"/></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+		
+	</div>
+	<div>
+	<br>
+	<button><a href="{{ path('create')}}">Créer un étudiant</a></button>
+	</div>
+{% endblock %}
