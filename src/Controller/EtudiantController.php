@@ -18,12 +18,14 @@ class EtudiantController extends AbstractController
     /**
      * @Route("/", name="etudiant")
      */
-    public function index(EtudiantRepository $etudiantRepo)
+    public function index(EtudiantRepository $etudiantRepo,CoursRepository $coursRepo)
     {
         $etudiants = $etudiantRepo->findAll();
+        $cours = $coursRepo->findAll();
         return $this->render('etudiant/index.html.twig', [
             'controller_name' => 'EtudiantController',
-            'etudiants' => $etudiants
+            'etudiants' => $etudiants,
+            'cours' => $cours
         ]);
     }
 

@@ -28,4 +28,27 @@
 	<br>
 	<button><a href="{{ path('create')}}">Créer un étudiant</a></button>
 	</div>
+
+	<div>
+		<h1>Liste des Cours</h1>
+		<table BORDER WIDTH="50%" >
+			<tr>
+				<th>Theme</th>
+				<th>Nombre heurs</th>
+				<th>Modifier</th>
+			</tr>
+			 {% for cour in cours %}
+				<tr>
+					<td>{{cour.theme}}</td>
+					<td>{{cour.nbHeures}}</td>
+				</tr>
+			{% endfor %} 
+		</table>
+		
+	</div>
+	<div>
+	<br>
+	<button><a href="{{ path('CreateCour')}}">Créer un cours</a></button>
+	</div>
+	
 {% endblock %}
