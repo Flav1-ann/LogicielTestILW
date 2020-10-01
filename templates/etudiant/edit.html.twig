@@ -10,9 +10,44 @@
         {{form_end( etudiantForm )}}
         <br>
 	</div>
-	<h1> Ajout d'un cours </h1>
-    
-    <div>
+
+		<div>
+		<h1>Liste des Cours de cet éleve</h1>
+		<table BORDER WIDTH="50%" >
+			<tr>
+				<th>Theme du cour</th>
+				<th>Nombre heures</th>
+				{# <th>Supprimer le cours</th> #}
+			</tr>
+			 {% for courE in etudiant.cours %}
+				<tr>
+					<td>{{courE.theme}}</td>
+					<td>{{courE.nbHeures}}</td>
+				</tr>
+			{% endfor %} 
+		</table>
+		
+	</div>
+	<div>
+		<h1>Liste des Cours</h1>
+		<table BORDER WIDTH="50%" >
+			<tr>
+				<th>Theme</th>
+				<th>Nombre heures</th>
+				<th>Ajouter ce cour</th>
+			</tr>
+			 {% for cour in cours %}
+				<tr>
+					<td>{{cour.theme}}</td>
+					<td>{{cour.nbHeures}}</td>
+					<td><button><a href="{{ path('addCourEtudiant',{'idEtudiant': etudiant.id,'idCour': cour.id}) }}">Ajouter ce cours</a></button></td>
+				</tr>
+			{% endfor %} 
+		</table>
+		
+	</div>
+	<div>
+
 	<br>
 		<button><a href="{{ path('supprimerEtudiant',{'id': etudiant.id}) }}">Supprimer l'étudiant</a></button>
 	</div>

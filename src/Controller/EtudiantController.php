@@ -54,7 +54,7 @@ class EtudiantController extends AbstractController
     /**
      * @Route("/consulterEtudiant/{id}", name="consulterEtudiant")
      */
-    public function consulterEtudiant(EntityManagerInterface $manager, Request $request, Etudiant $etudiant )
+    public function consulterEtudiant(EntityManagerInterface $manager,CoursRepository $coursRepo, Request $request, Etudiant $etudiant )
     {
       
         $etudiantForm = $this->createForm(CreateEtudiantFormType::class, $etudiant);
@@ -64,6 +64,7 @@ class EtudiantController extends AbstractController
             $manager->flush();
             return $this->redirectToRoute('etudiant');
         }
+        $cours = $coursRepo->findAll();
 
        
        
@@ -71,6 +72,8 @@ class EtudiantController extends AbstractController
             'controller_name' => 'EtudiantController',
             'etudiantForm' => $etudiantForm->createView(),
             'etudiant' => $etudiant,
+            'cours' => $cours,
+
         ]);
     }
 
@@ -83,5 +86,19 @@ class EtudiantController extends AbstractController
         return $this->redirectToRoute('etudiant');
     }
 
+    /**
+     * @Route("/addCourEtudiant/{idEtudiant}/{idCour}", name="addCourEtudiant")
+     */
+    public function addCourEtudiant(EntityManagerInterface $manager,EtudiantRepository $etudiantRepo,CoursRepository $coursRepo , Request $request,$idEtudiant,$idCour)
+    {
+        $etudiant = $etudiantRepo ->find($idEtudiant);
+        $cours = $coursRepo ->find($idCour);
+        $etudiant->addCour($cours);
+        $manager->persist($etudiant);
+        $manager->flush();
+        
+        return $this->redirectToRoute('consulterEtudiant',['id'=> $idEtudiant]);
+        
+    }
 
 }

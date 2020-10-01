@@ -13,12 +13,14 @@
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th>Modifier</th>
+				<th>Supprimer</th>
 			</tr>
 			{% for etudiant in etudiants %}
 				<tr>
 					<td>{{etudiant.nom}}</td>
 					<td>{{etudiant.prenom}}</td>
 					<td><a href="{{ path('consulterEtudiant',{'id': etudiant.id})}}"><img class="Logo_tab" src="/image/modif.png"/></a></td>
+					<td><a href="{{ path('supprimerEtudiant',{'id': etudiant.id}) }}"><img class="Logo_tab" src="/image/spp.png"/></a></td>
 				</tr>
 			{% endfor %}
 		</table>
@@ -28,14 +30,12 @@
 	<br>
 	<button><a href="{{ path('create')}}">Créer un étudiant</a></button>
 	</div>
-
 	<div>
 		<h1>Liste des Cours</h1>
 		<table BORDER WIDTH="50%" >
 			<tr>
 				<th>Theme</th>
-				<th>Nombre heurs</th>
-				<th>Modifier</th>
+				<th>Nombre heures</th>
 			</tr>
 			 {% for cour in cours %}
 				<tr>
