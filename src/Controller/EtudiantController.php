@@ -32,7 +32,7 @@ class EtudiantController extends AbstractController
     /**
      * @Route("/createtudiant", name="create")
      */
-    public function createudiant(EntityManagerInterface $manager, Request $request)
+    public function createtudiant(EntityManagerInterface $manager, Request $request)
     {
 
         $etudiant = new Etudiant();
@@ -65,8 +65,6 @@ class EtudiantController extends AbstractController
             return $this->redirectToRoute('etudiant');
         }
         $cours = $coursRepo->findAll();
-
-       
        
         return $this->render('etudiant/edit.html.twig', [
             'controller_name' => 'EtudiantController',
