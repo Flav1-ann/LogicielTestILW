@@ -71,7 +71,6 @@ class EtudiantController extends AbstractController
             'controller_name' => 'EtudiantController',
             'etudiantForm' => $etudiantForm->createView(),
             'etudiant' => $etudiant,
-            'coursForm' => $coursForm->createView(),
         ]);
     }
 
